@@ -32,10 +32,15 @@ function mtral_custom_plugin_row_meta( $links, $file ) {
 }
 
 // Load textdomain.
-load_plugin_textdomain( 'mtral', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+add_action( 'plugins_loaded', 'mtral_load_plugin_textdomain' );
+function mtral_load_plugin_textdomain() {
+        load_plugin_textdomain( 'mtral', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
 
 // Include admin settings
-require_once(MTRAL_PATH.'redirect-after-login-admin.php');
+if ( is_admin() ) {
+        require_once(MTRAL_PATH.'redirect-after-login-admin.php');
+}
 
 add_filter( 'login_redirect', 'redirect_after_login_per_role', 10, 3 );
 function redirect_after_login_per_role()
