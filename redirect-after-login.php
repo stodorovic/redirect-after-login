@@ -37,6 +37,7 @@ load_plugin_textdomain( 'mtral', false, dirname( plugin_basename( __FILE__ ) ) .
 // Include admin settings
 require_once(MTRAL_PATH.'redirect-after-login-admin.php');
 
+add_filter( 'login_redirect', 'redirect_after_login_per_role', 10, 3 );
 function redirect_after_login_per_role()
 {
 	//retrieve current user info 
@@ -62,4 +63,3 @@ function redirect_after_login_per_role()
     }
 	
 }
-add_filter("login_redirect", "redirect_after_login_per_role", 10, 3);

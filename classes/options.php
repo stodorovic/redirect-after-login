@@ -303,8 +303,8 @@ class MTRAL_Options {
 		
 			//Get saved options
 			$setting = get_option('mtral_settings');
-			$admin_pages = $setting[$id.'_'.$role_slug];
-			$admin_custom_pages = $setting[$id.'_custom_url_'.$role_slug];
+			$admin_pages = isset($setting[$id.'_'.$role_slug]) ? $setting[$id.'_'.$role_slug] : '';
+			$admin_custom_pages = isset($setting[$id.'_custom_url_'.$role_slug]) ? $setting[$id.'_custom_url_'.$role_slug] : '';
 					
 			$html .= '<div class="block">';
 			$html .= sprintf( '<h4>%s</h4>', translate_user_role($role_options['name']) );

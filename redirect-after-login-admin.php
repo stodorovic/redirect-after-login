@@ -41,4 +41,3 @@ if ( $wp_version < 3.6 && $_GET['page'] == 'mtral') {
 		)
 	);
 }
-?>
